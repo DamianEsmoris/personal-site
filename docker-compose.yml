@@ -1,0 +1,6 @@
+services:
+  database:
+    image: mysql
+    env_file: database/.env
+    volumes:
+      - .data:/var/lib/mysql
