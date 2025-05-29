@@ -4,3 +4,10 @@ services:
     env_file: database/.env
     volumes:
       - .data:/var/lib/mysql
+  api:
+    build: api
+    env_file: database/.env
+    volumes:
+      - ./notes:/app/notes
+    ports:
+      - 8000:8000
