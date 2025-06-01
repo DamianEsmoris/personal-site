@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import type { EducationItem } from '@types/education.d.ts';
+import EducationItem from '@components/EducationItem.astro';
+const response = await fetch(process.env.EDUCATION_API + '/education');
+
+const education: EducationItem[]  = (await response.json()).map(e => {
+    e.started = new Date(e.started);
+    if (e.ended !== null)
+        e.ended = new Date(e.ended);
+    return e;
+});
+---
+<Layout>
+    {education.map(e => <EducationItem item={e}/>)}
+</Layout>

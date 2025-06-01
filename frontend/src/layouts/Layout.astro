@@ -1,0 +1,27 @@
+---
+import '@assets/main.css';
+import Navbar from '@components/Navbar.astro';
+import Linksbar from '@components/Linksbar.astro';
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>desmoris</title>
+	</head>
+	<body>
+        <Navbar />
+        <div id="main">
+            <slot />
+        </div>
+        <Linksbar />
+        <style>
+            #main:has(+footer) {
+                margin: 15px auto;
+            }
+        </style>
+	</body>
+</html>

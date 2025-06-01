@@ -1,0 +1,26 @@
+[
+    {
+        "name": "javascript",
+        "icon": "mdi:language-javascript"
+    },
+    {
+        "name": "php",
+        "icon": "mdi:language-php"
+    },
+    {
+        "name": "html",
+        "icon": "mdi:language-html5"
+    },
+    {
+        "name": "css",
+        "icon": "mdi:language-css3"
+    },
+    {
+        "name": "git",
+        "icon": "mdi:git"
+    },
+    {
+        "name": "docker",
+        "icon": "mdi:docker"
+    }
+]

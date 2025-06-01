@@ -1,0 +1,12 @@
+---
+import LINKS from '@assets/links.json';
+import { Icon } from 'astro-icon/components';
+---
+<div>
+    {LINKS.map(({name,icon,url}) =>
+        <a href={url} target="blank">
+            <Icon name={icon} />
+            {name}
+        </a>
+    )}
+</div>

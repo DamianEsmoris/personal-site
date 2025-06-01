@@ -1,0 +1,44 @@
+---
+import { Icon } from 'astro-icon/components';
+const pathname = new URL(Astro.request.url).pathname;
+const routes = [
+    { path: '/', icon: 'mdi:home' },
+    { path: '/education', icon: 'mdi:graduation-cap' },
+]
+---
+<header>
+    <div>
+        {routes.map(({path, icon}) => 
+            <a
+                class={'icon ' + (pathname === path ? 'current' : '')}
+                href={path}
+            >
+                <Icon name={icon}>
+            </a>
+        )}
+    </div>
+</header>
+
+<style>
+    header {
+        width: 100vw;
+        background: var(--border);
+        padding: 10px 1em;
+        box-sizing: border-box;
+        div {
+            display: flex;
+            max-width: 900px;
+            width: 100%;
+            gap: 15px;
+            margin: auto;
+        }
+        .icon {
+            font-size: 30px;
+            display: flex;
+            color: var(--text-secondary);
+            &.current {
+                color: var(--link);
+            }
+        }
+    }
+</style>

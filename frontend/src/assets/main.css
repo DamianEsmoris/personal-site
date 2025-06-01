@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+:root {
+    --bg-color: #1A1410;
+    --text-primary: #EAE3DC;
+    --text-secondary: #BFAE9F;
+    --accent: #D6A760;
+    --link: #F0C27B;
+    --border: #2B1F18;
+
+    --font-main: 'Inter', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+
+    --spacing-base: 1.6rem;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 0;
+    width: 100vw;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+body:has(>footer) {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    max-width: 900px;
+    padding: 0 1em;
+    margin: 0 auto;
+    box-sizing: border-box;
+    & > :first-child {
+        margin-top: 15px;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+h2 {
+    font-size: 2rem;
+}
+h3 {
+    font-size: 1.5rem;
+}
+h4 {
+    font-size: 1.25rem;
+}
+
+p {
+    margin-bottom: var(--spacing-base);
+    font-weight: 400;
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+code, pre {
+    font-family: 'Fira Code', monospace;
+    background-color: #1e1e1e;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2rem 0;
+}

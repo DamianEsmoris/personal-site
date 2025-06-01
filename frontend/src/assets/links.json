@@ -1,0 +1,12 @@
+[
+    {
+        "name": "github",
+        "icon": "mdi:github",
+        "url": "https://github.com/damianesmoris"
+    },
+    {
+        "name": "mail",
+        "icon": "mdi:mail",
+        "url": "mailto:damianesmoris@gmail.com"
+    }
+]

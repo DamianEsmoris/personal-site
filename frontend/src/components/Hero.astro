@@ -1,0 +1,78 @@
+---
+import profilePicture from '../assets/profile.png';
+import SKILLS from '../assets/skills.json';
+import { Icon } from 'astro-icon/components';
+const { src: profilePictureUrl } = profilePicture;
+---
+<section>
+    <img src={profilePictureUrl} alt="Damián" />
+    <div>
+        <h1>Hola, soy Damián</h1>
+        <p>Soy una persona inquieta, apasionada por el desarrollo y la infraestructura lógica basada en contenedores. Siempre estoy buscando aprender para encontrar formas de construir mejores soluciones.</p>
+        <span class="logos">
+            {SKILLS.map(({name, icon}) => <Icon name={icon} title={name}/>)}
+        </span>
+    </div>
+</section>
+
+<style>
+    section {
+        display: inline-flex;
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        img {
+            margin: 20px 40px;
+            background: linear-gradient(180deg, var(--accent) -45%, var(--bg-color) 20%, var(--border));
+            width: 200px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        div {
+            display: inline-flex;
+            flex-direction: column;
+        }
+    }
+
+    .logos {
+        margin: auto 0 10px 0;
+        font-size: 32px;
+        display: inline-flex;
+        gap: 10px;
+        color: var(--text-secondary);
+        position: relative;
+    }
+
+    .logos::after {
+        content: "";
+        display: block;
+        position: absolute;
+        background: var(--accent);
+        width: 32px;
+        height: 100%;
+        left: 0;
+        mix-blend-mode: color;
+        animation: scroll 10s infinite;
+    }
+
+    @keyframes scroll {
+        0% { width: 0 }
+        90% { width: 242px; }
+    }
+
+    @media (width <= 1024px) {
+        section {
+            flex-direction: column;
+            img {
+                max-width: 200px;
+                margin-right: auto;
+                margin-left: 0;
+            }
+        }
+    }
+</style>
