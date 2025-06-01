@@ -1,8 +1,10 @@
-import mysql from 'mysql2';
+import mysql from 'mysql2/promise';
 import { DATABASE_CONNECTION_CONFIG } from './constants.js';
 
-export function connectDatabase() {
-    const connecton = mysql.createConnection(DATABASE_CONNECTION_CONFIG);
-    connecton.connect();
-    return connecton;
+const pool = mysql.createPool(DATABASE_CONNECTION_CONFIG);
+
+export async function connectDatabase() {
+    const connection = await pool.getConnection();
+    await connection.query("SET NAMES utf8mb4;");
+    return connection;
 }

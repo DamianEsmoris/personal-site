@@ -1,4 +1,4 @@
-CREATE TABLE Posts(
+CREATE TABLE IF NOT EXISTS Posts(
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     url VARCHAR(512) NOT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE Posts(
     published BOOLEAN DEFAULT FALSE
 );
 
-CREATE TABLE Education(
+CREATE TABLE IF NOT EXISTS Education(
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     type VARCHAR(32) CHECK (type in ('formal', 'course')),
