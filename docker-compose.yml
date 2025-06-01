@@ -4,10 +4,19 @@ services:
     env_file: database/.env
     volumes:
       - .data:/var/lib/mysql
-  api:
+  notes-api:
     build: api
     env_file: database/.env
     volumes:
       - ./notes:/app/notes
     ports:
       - 8000:8000
+    command: ["run", "notes-api"]
+  education-api:
+    build: api
+    env_file: database/.env
+    volumes:
+      - ./notes:/app/notes
+    ports:
+      - 8001:8000
+    command: ["run", "education-api"]
