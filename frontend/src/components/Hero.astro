@@ -8,7 +8,7 @@ const { src: profilePictureUrl } = profilePicture;
     <img src={profilePictureUrl} alt="Damián" />
     <div>
         <h1>Hola, soy Damián</h1>
-        <p>Soy una persona inquieta, apasionada por el desarrollo y la infraestructura lógica basada en contenedores. Siempre estoy buscando aprender para encontrar formas de construir mejores soluciones.</p>
+        <p>Una persona inquieta, apasionada por el desarrollo y la infraestructura lógica basada en contenedores. Siempre estoy buscando aprender para encontrar formas de construir mejores soluciones.</p>
         <span class="logos">
             {SKILLS.map(({name, icon}) => <Icon name={icon} title={name}/>)}
         </span>
@@ -40,29 +40,25 @@ const { src: profilePictureUrl } = profilePicture;
     }
 
     .logos {
-        margin: auto 0 10px 0;
         font-size: 32px;
         display: inline-flex;
         gap: 10px;
         color: var(--text-secondary);
         position: relative;
+
+        svg:hover {
+          animation: shake 0.4s ease-in-out;
+        }
     }
 
-    .logos::after {
-        content: "";
-        display: block;
-        position: absolute;
-        background: var(--accent);
-        width: 32px;
-        height: 100%;
-        left: 0;
-        mix-blend-mode: color;
-        animation: scroll 10s infinite;
-    }
-
-    @keyframes scroll {
-        0% { width: 0 }
-        90% { width: 242px; }
+    @keyframes shake {
+      0%   { transform: translate(0); }
+      15%  { transform: translate(-2px, 1px) rotate(-1deg); }
+      30%  { transform: translate(2px, -1px) rotate(1deg); }
+      45%  { transform: translate(-1.5px, 1px) rotate(-0.5deg); }
+      60%  { transform: translate(1.5px, -1px) rotate(0.5deg); }
+      75%  { transform: translate(-1px, 1px) rotate(-0.25deg); }
+      100% { transform: translate(0); }
     }
 
     @media (width <= 1024px) {

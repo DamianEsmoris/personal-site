@@ -16,6 +16,10 @@
         "icon": "mdi:language-css3"
     },
     {
+        "name": "linux",
+        "icon": "codicon:terminal-linux"
+    },
+    {
         "name": "git",
         "icon": "mdi:git"
     },
