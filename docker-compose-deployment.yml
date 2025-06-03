@@ -1,0 +1,39 @@
+services:
+  database:
+    image: beercan1989/arm-mysql
+    env_file: database/.env
+    volumes:
+      - .data:/var/lib/mysql
+    command: ["mysqld", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+  notes-api:
+    build: api
+    env_file: database/.env
+    volumes:
+      - ./notes:/app/notes
+    command: ["run", "notes-api"]
+    depends_on:
+      - database
+  education-api:
+    build: api
+    env_file: database/.env
+    volumes:
+      - ./notes:/app/notes
+    command: ["run", "education-api"]
+    depends_on:
+      - database
+  frontend:
+    build: frontend
+    env_file: frontend/.env
+    depends_on:
+      - education-api
+  proxy:
+    image: nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /var/www/certbot-challenges:/var/www/certbot-challenges/:ro
+      - ./proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
