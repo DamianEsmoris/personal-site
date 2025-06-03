@@ -1,6 +1,6 @@
 services:
   database:
-    image: mysql
+    image: beercan1989/arm-mysql
     env_file: database/.env
     volumes:
       - .data:/var/lib/mysql
@@ -11,7 +11,7 @@ services:
     volumes:
       - ./notes:/app/notes
     ports:
-      - 8000:8000
+      - 8001:8000
     command: ["run", "notes-api"]
     depends_on:
       - database
@@ -21,14 +21,23 @@ services:
     volumes:
       - ./notes:/app/notes
     ports:
-      - 8001:8000
+      - 8002:8000
     command: ["run", "education-api"]
     depends_on:
       - database
   frontend:
     build: frontend
     env_file: frontend/.env
-    ports:
-      - 80:4321
     depends_on:
       - education-api
+  proxy:
+    image: nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /var/www/certbot-challenges:/var/www/certbot-challenges/:ro
+      - ./proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
